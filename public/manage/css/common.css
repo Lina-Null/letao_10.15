@@ -1,3 +1,14 @@
+body,html,div,h1,h2,h3,h4,h5,img,p,ul,li,ol{
+    margin:0px;
+    padding:0px;
+}
+
+ul,ol,li{
+    list-style: none;
+}
+a:hover{
+    text-decoration: none;
+}
 .body_bg{
    background-color: #222D23;
 }
@@ -9,4 +20,67 @@
 }
 .mt_150{
     margin-top:150px;
+}
+/*侧边栏*/
+.lt_aside{
+    width:180px;
+    height:100%;
+    position: fixed;
+    left:0;
+    top:0;
+    background-color: #222D23;
+}
+.lt_aside .aside_top{
+    width:100%;
+    height:50px;
+    background-color:  #3c8dbc;
+}
+.aside_top h3{
+    text-align: center;
+    line-height: 50px;
+    color:#fff;
+    font-weight: 400;
+
+}
+.aside_info .info_user{
+    padding-top: 30px;
+}
+.aside_info .info_user img{
+    height:80px;
+    width:80px;
+    border-radius: 50%;
+    display: block;
+    margin:0 auto;
+}
+.aside_info .info_user p{
+    font-size: 18px;
+    color:#fff;
+    text-align: center;
+}
+.aside_nav ul{
+    padding-top:30px;
+}
+.aside_nav ul li{
+    margin-bottom:15px;
+    text-align: center;
+    font-size: 16px;
+
+}
+.aside_nav ul li a{
+    color:#fff;
+}
+/*主题*/
+.lt_main{
+    width:100%;
+    height:100%;
+    padding-left: 180px;
+    position: relative;
+}
+.lt_topbar{
+    width:100%;
+    height:50px;
+    position: absolute;
+    top:0;
+    left:180px;
+    background-color: #3c8dbc;
 }
