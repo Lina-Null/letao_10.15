@@ -69,12 +69,19 @@
         </ol>
         <!--echart表格-->
         <div class="lt_content">
-            <table>
+            <table  class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>序号</th>
+                    <th width="10%">序号</th>
+                    <th width="20%">用户名</th>
+                    <th width="30%">手机号</th>
+                    <th width="20%">状态</th>
+                    <th width="20%">操作</th>
                 </tr>
                 </thead>
+                <tbody>
+                <!-- 刨个坑 -->
+                </tbody>
             </table>
         </div>
 
@@ -112,13 +119,35 @@
 </div><!-- /.modal -->
 
 
+<!--模板引入-->
+<script type="text/html" id="userTpl">
+    {{each rows v i}}
+    <tr>
+        <td>{{i+1}}</td>
+        <td>{{v.username}}</td>
+        <td>{{v.mobile}}</td>
+        <td>{{ v.isDelete === 1 ? "正常":"禁用"}}</td>
+        <td data-id="{{v.id}}">
+            {{ if v.isDelete === 1}}
+            <button class="btn btn-danger">禁用</button>
+            {{else}}
+            <button class="btn btn-success">启用</button>
+            {{/if}}
+        </td>
+    </tr>
+{{ /each }}
+</script>
+
+
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
 <script src="./lib/echarts/echarts.min.js"></script>
 <script src="./js/common.js" ></script>
 <script src="./js/user.js"></script>
+
 
 </body>
 </html>
