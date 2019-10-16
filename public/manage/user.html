@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
     <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/user.css">
 </head>
 <body>
 <div class="lt_aside">
@@ -23,17 +23,17 @@
     <div class="aside_nav">
         <ul>
             <li >
-                <a href="user.html" >
+                <a href="user.html" class="current">
                     <i class="glyphicon glyphicon-user"></i>
                     <span>用户管理</span>
                 </a>
             </li>
-            <li >
+            <li  class="current">
                 <a href="javascript:;" class="category ">
                     <i class="glyphicon glyphicon-user"></i>
                     <span>分类管理</span>
                 </a>
-<!--                -->
+                <!--                -->
                 <div class="categoryChild" style="display: none;">
                     <a href="first.html" >一级分类</a>
                     <a href="second.html" class="current" >二级分类</a>
@@ -50,7 +50,7 @@
     </div>
 </div>
 <div class="lt_main">
-<!--    顶部-->
+    <!--    顶部-->
     <div class="lt_topbar">
         <a href="javascript:;" class="pull-left icon_menu">
             <i class="glyphicon glyphicon-align-justify"></i>
@@ -59,18 +59,17 @@
             <i class="glyphicon glyphicon-log-out"></i>
         </a>
     </div>
-<!--    主体-->
+    <!--    主体-->
     <div class="container-fluid">
-    <!--    路径导航-->
+        <!--    路径导航-->
         <ol class="breadcrumb">
             <li ><a href="index.html">管理系统</a></li>
-            <li class="active">首页</li>
+            <li class="active">用户管理</li>
 
         </ol>
-    <!--echart表格-->
+        <!--echart表格-->
         <div class="lt_content">
-            <div class="echarts_1 pull-left"></div>
-            <div class="echarts_2 pull-right"></div>
+
         </div>
 
 
@@ -113,7 +112,7 @@
 <script src="./lib/nprogress/nprogress.js"></script>
 <script src="./lib/echarts/echarts.min.js"></script>
 <script src="./js/common.js" ></script>
-<script src="./js/index.js"></script>
+<script src="./js/user.js"></script>
 
 </body>
 </html>
