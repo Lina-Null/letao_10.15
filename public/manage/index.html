@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
     <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
-    <link rel="stylesheet" href="./css/index.css">
+
 </head>
 <body>
 <div class="lt_aside">
@@ -39,7 +39,7 @@
                     <a href="second.html" class="current" >二级分类</a>
                 </div>
             </li>
-            <li class="current">
+            <li >
                 <a href="product.html" >
                     <i class="glyphicon glyphicon-tags"></i>
                     <span>商品管理</span>
@@ -88,11 +88,13 @@
 
 
 <!--退出按钮 弹出模态框-->
-<div class="modal fade" tabindex="-1" role="dialog" id="exitModel">
-    <div class="modal-dialog" role="document">
+<!--最外层蒙层-->
+<div class="modal fade" tabindex="-1" id="exitModel">
+<!--    模态框结构-->
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" ><span>&times;</span></button>
                 <h4 class="modal-title">温馨提示</h4>
             </div>
             <div class="modal-body">

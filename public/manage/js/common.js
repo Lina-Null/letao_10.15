@@ -73,4 +73,13 @@ $(function(){
             }
         });
     });
+
+
+//    点击分类管理 切换到一级分类
+    $(".category").click(function(){
+        $(".aside_nav a").removeClass("current");
+      $(".aside_nav .categoryChild").stop().slideToggle();
+
+      // $(".categoryChild").css("display","block");
+    });
 });

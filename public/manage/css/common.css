@@ -82,9 +82,12 @@ a:hover,a:link,a:visited,a,a:active{
     padding-top:15px;
     padding-bottom:15px;
     color:#fff;
+    box-sizing: border-box;
+    border-left:3px solid #222D23;
 }
 .aside_nav ul li a.current{
     background-color:#1d1f21;
+    border-left:3px solid #2aabd2;
 }
  .categoryChild{
 
@@ -96,11 +99,13 @@ a:hover,a:link,a:visited,a,a:active{
     padding-top:15px ;
     padding-bottom:15px;
     padding-left:20px;
+    box-sizing: border-box;
 
 
 }
 .lt_aside .aside_nav a.current{
     background-color:#1d1f21;
+    border-left:4px solid #2aabd2;
 }
 
 
@@ -150,4 +155,24 @@ a:hover,a:link,a:visited,a,a:active{
 /*主体*/
 .container-fluid{
     padding-top:30px;
+}
+
+/*表格设置*/
+.lt_content{
+    padding-top:20px;
+    padding-left:10px;
+}
+.lt_content table th{
+    vertical-align: middle;
+    text-align: center;
+}
+.lt_content table tbody td{
+    text-align: center;
+    /*表格水平居中*/
+    vertical-align: middle;
+    /*line-height:14px;*/
+}
+.echarts_1,.echarts_2{
+    width: 50%;
+    height: 600px;
 }
