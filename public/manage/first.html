@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
     <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
-    <link rel="stylesheet" href="./css/first.css">
+
 </head>
 <body>
 <div class="lt_aside">
@@ -29,13 +29,13 @@
                 </a>
             </li>
             <li  >
-                <a href="javascript:;" class="category">
+                <a href="javascript:;" class="category ">
                     <i class="glyphicon glyphicon-user"></i>
                     <span>分类管理</span>
                 </a>
                 <!--                -->
                 <div class="categoryChild" >
-                    <a href="first.html"  class="current">一级分类</a>
+                    <a href="first.html" class="current" >一级分类</a>
                     <a href="second.html" >二级分类</a>
                 </div>
             </li>
@@ -64,28 +64,31 @@
         <!--    路径导航-->
         <ol class="breadcrumb">
             <li ><a href="index.html">管理系统</a></li>
-            <li ><a href="index.html">分类管理</a></li>
-            <li class="active">一级分类</li>
+            <li class="active">分类管理</li>
+            <li class="active">二级分类</li>
 
         </ol>
         <!--echart表格-->
         <div class="lt_content">
+            <button id="addBtn" class="btn btn-default mb_20">添加分类</button>
             <table  class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th width="10%">序号</th>
-                    <th width="20%">用户名</th>
-                    <th width="30%">手机号</th>
-                    <th width="20%">状态</th>
-                    <th width="20%">操作</th>
+                    <th width="20%">序号</th>
+                    <th width="80%">一级分类名</th>
                 </tr>
                 </thead>
                 <tbody>
                 <!-- 刨个坑 -->
                 </tbody>
             </table>
-        </div>
 
+            <!--分页插件-->
+            <div class="text-right">
+                <!--            分页容器标签是<ul>-->
+                <ul id="paginator"></ul>
+            </div>
+        </div>
 
 
     </div>
@@ -93,20 +96,29 @@
 
 </div>
 
-<!-- 启用禁用模态框 -->
-<div class="modal fade" id="userModal">
+<!-- 启用添加分类模态框 -->
+<div class="modal fade" id="addModal">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                <h4 class="modal-title">温馨提示</h4>
+                <h4 class="modal-title">添加分类</h4>
             </div>
             <div class="modal-body">
-                <p class="red"><i class="glyphicon glyphicon-info-sign"></i>你确定要执行此操作吗？</p>
+                <form id="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="请输入一级分类" name="categoryName">
+<!--                        挖坑-->
+                        <ul id="addList">
+
+                        </ul>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" id="submitBtn">确定</button>
+                <!-- html5 新增 form 属性, 可以让表单外的按钮, 与表单关联起来(就相当于是写在了表单里面)-->
+                <button type="submit" class="btn btn-primary" id="submitBtn" form="form">确定</button>
             </div>
         </div>
     </div>
@@ -118,11 +130,11 @@
 
 
 <!--退出按钮 弹出模态框-->
-<div class="modal fade" tabindex="-1"  id="exitModel">
-    <div class="modal-dialog modal-sm" >
+<div class="modal fade" tabindex="-1" role="dialog" id="exitModel">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span >&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">温馨提示</h4>
             </div>
             <div class="modal-body">
@@ -137,21 +149,17 @@
 </div><!-- /.modal -->
 
 
+
+
+
 <!--模板引入-->
-<script type="text/html" id="userTpl">
+<script type="text/html" id="firstTpl">
     {{each rows v i}}
     <tr>
-        <td>{{i+1}}</td>
-        <td>{{v.username}}</td>
-        <td>{{v.mobile}}</td>
-        <td>{{ v.isDelete === 1 ? "正常":"禁用"}}</td>
-        <td data-id="{{v.id}}" class="td-operate">
-            {{ if v.isDelete === 1}}
-            <button class="btn btn-danger  btn-operate">禁用</button>
-            {{else}}
-            <button class="btn btn-success btn-operate">启用</button>
-            {{/if}}
-        </td>
+        <!--        第几个 = 当前页第几个+ 前面页数*每页条数-->
+        <td>{{i+1 + (page-1)*size}}</td>
+        <td>{{v.categoryName}}</td>
+
     </tr>
     {{ /each }}
 </script>
@@ -160,6 +168,7 @@
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
 <script src="./lib/artTemplate/template-web.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
 <script src="./lib/echarts/echarts.min.js"></script>
