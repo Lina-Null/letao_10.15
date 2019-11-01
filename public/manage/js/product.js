@@ -60,6 +60,8 @@ $(function(){
         var txt = $(this).text();
         $('#dropdownTxt').text(txt);
         $("[name='brandId']").val(id);
+    //    重置校验状态
+        $("#form").data("bootstrapValidator").updateStatus("brandId","VALID");
     });
 //上传图片
     $("#fileupload").fileupload({
@@ -176,7 +178,7 @@ $(function(){
                     notEmpty: {
                         message: "请上传3张图片"
                     }
-                }
+                } 
             }
 
 
