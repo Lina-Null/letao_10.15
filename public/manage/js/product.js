@@ -44,8 +44,8 @@ $(function(){
             url:"/category/querySecondCategoryPaging",
             type:"get",
             data:{
-                page:currentPage,
-                pageSize:pageSize
+                page:1,
+                pageSize:100
             },
             dataType:"json",
             success:function(info){
@@ -67,6 +67,7 @@ $(function(){
         // 上传完图片, 响应的回调函数配置
         // 每一张图片上传, 都会响应一次
         done: function (e, data) {
+
             // 获取图片地址对象
             var picObj = data.result;
             // 获取图片地址
@@ -76,7 +77,7 @@ $(function(){
             // 新的图片, 应该添加到 imgBox 最前面去
             $("#imgBox").prepend('<img src="'+ picAddr +'" width="100">');
             // 如果上传的图片个数大于 3个, 需要将最旧的那个(最后面的哪项), 要删除
-            if(pic.lenght > 3){
+            if(picArr.length > 3){
                 // 删除数组的最后一项
                 picArr.pop();
                 // 除了删除数组的最后一项, 还需要将页面中渲染的最后一张图片删除掉
@@ -86,7 +87,7 @@ $(function(){
 
             // 如果处理后, 图片数组的长度为 3, 说明已经选择了三张图片, 可以进行提交
             // 需要将表单 picStatus 的校验状态, 置成 VALID
-            if(pic.lenght === 3){
+            if(picArr.length === 3){
                 $('#form').data("bootstrapValidator").updateStatus("picStatus", "VALID")
             }
 
@@ -106,17 +107,17 @@ $(function(){
     // 配置字段
         fields:{
         //    id
-            brandId:{
-                validators:{
-                    notEmty:{
-                        message:"请选择二级分类"
+            brandId: {
+                validators: {
+                    notEmpty: {
+                        message: "请选择二级分类"
                     }
                 }
             },
             //商品名称
             proName:{
                 validators:{
-                    notEmty:{
+                    notEmpty:{
                         message:"请输入商品名称"
                     }
                 }
@@ -182,7 +183,36 @@ $(function(){
         }
     });
 
+//表单发送
+    $("#form").on("success.form.bv",function(e){
+        e.preventDefault();
+        var params = $("#form").serialize();
+        params += "&picName1="+picArr[0].picName+"&picAddr1="+picArr[0].picAddr;
+        params += "&picName2="+picArr[1].picName+"&picAddr2="+picArr[1].picAddr;
+        params += "&picName3="+picArr[2].picName+"&picAddr3="+picArr[2].picAddr;
+        $.ajax({
+            url:"/product/addProduct",
+            type:"post",
+            dataType:"json",
+            data:params,
+            success:function(info){
 
+                if(info.success){
+                    console.log(info);
+                    $("#addModal").modal('hide');
+                    currentPage = 1;
+                    render();
+                    $("#form").data("bootstrapValidator").resetForm(true);
+                    $('#dropdownTxt').text("请选择二级分类");
+                    $("#imgBox img").remove();
+                    picArr = [];
+                }
+            // 成功重置表单
+            //    刷新页面
+
+            }
+        });
+    });
 
 
 
