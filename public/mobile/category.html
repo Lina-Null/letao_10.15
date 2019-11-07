@@ -27,26 +27,8 @@
           <div class="mui-scroll-wrapper">
               <div class="mui-scroll">
                   <!--这里放置真实显示的DOM内容-->
-                  <lu>
-                      <li><a href="#" class="current">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
-                      <li><a href="#">运动馆</a></li>
+                  <lu class="leftList">
+
                   </lu>
               </div>
           </div>
@@ -56,7 +38,7 @@
         <div class="mui-scroll-wrapper">
             <div class="mui-scroll">
                 <!--这里放置真实显示的DOM内容-->
-                <ul>
+                <ul class="rightList">
                     <li><a href="#"><img src="./images/brand1.png" alt=""><p>耐克</p></a></li>
                     <li><a href="#"><img src="./images/brand2.png" alt=""><p>耐克</p></a></li>
                     <li><a href="#"><img src="./images/brand3.png" alt=""><p>耐克</p></a></li>
@@ -81,9 +63,24 @@
 
     </div>
 </div>
-
+<script type="text/html" id="categoryLeft">
+{{ each rows v i}}
+    <li><a href="#" data-id="{{v.id}}" class="{{i === 0 ? 'current':''}}">{{v.categoryName}}</a></li>
+    {{/each}}
+</script>
+<script type="text/html" id="categoryRight">
+    {{if rows.length === 0}}
+    <p>没有更多分类信息</p>
+    {{else}}
+    {{ each rows v i}}
+    <li><a href="#" data-id="{{v.id}}"><img src="{{v.brandLogo}}" alt=""><p>{{v.brandName}}</p></a></li>
+    {{/each}}
+    {{/if}}
+</script>
 <script src="./lib/mui/js/mui.js"></script>
 <script src="./lib/zepto/zepto.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
 <script src="./js/common.js"></script>
+<script src="./js/category.js"></script>
 </body>
 </html>
