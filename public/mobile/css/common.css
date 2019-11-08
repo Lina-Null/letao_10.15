@@ -95,3 +95,55 @@ a,a:hover,a:visited,a:active{
     /*子元素是定位布局，父元素需要加定位*/
     position: relative;
 }
+/*搜索框*/
+.lt_search{
+    padding:10px;
+    width:100%;
+    position: relative;
+}
+.lt_search input{
+    float:left;
+    width:85%;
+    border: 1px solid #007AFF;
+    border-radius: 5px 0 0 5px;
+}
+.lt_search .btnSearch{
+    float: right;
+    width:15%;
+    height: 40px;
+    background-color: #007AFF ;
+    border: 1px solid #007AFF;
+    border-radius:0 5px 5px 0 ;
+    color:#fff;
+    font-size: 16px;
+}
+/*共用产品样式*/
+.lt_product{
+    padding:10px;
+}
+.lt_product li{
+    padding:10px;
+    float: left;
+    width:48%;
+    border:1px solid #ccc;
+    margin-bottom:10px;
+    text-align: center;
+}
+.lt_product li:nth-child(2n+1){
+    margin-right: 4%;
+}
+.lt_product li .price{
+    color: red;
+}
+.lt_product li .oldPrice{
+    color: #ccc;
+    text-decoration:line-through ;
+}
+.lt_product img{
+    margin:0 auto;
+    height: 100px;
+    width:100px;
+}
+.lt_product .mui-ellipsis-2{
+    height:40px;
+}
