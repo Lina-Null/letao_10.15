@@ -28,24 +28,15 @@
                 </div>
                 <div class="lt_sort ">
                     <a href="#">上架时间<i class="fa fa-angle-down"></i></a>
-                    <a href="#">价格<i class="fa fa-angle-down"></i></a>
-                    <a href="#" class="current">库存<i class="fa fa-angle-down"></i></a>
+                    <a href="#" data-type="price">价格<i class="fa fa-angle-down"></i></a>
+                    <a href="#" data-type= "num">库存<i class="fa fa-angle-down"></i></a>
                     <a href="#">折扣<i class="fa fa-angle-down"></i></a>
                 </div>
                 <div class="lt_product">
-                    <ul class="productList">
-                        <li>
-                            <img src="./images/product.jpg">
-                            <p class="mui-ellipsis-2">adidas 阿迪达斯 男士 场下休闲篮球鞋S83700</p>
-                            <p>
-                                <span class="price">￥560</span>
-                                <span class="oldPrice">￥600</span>
-                            </p>
-                            <button class="mui-btn mui-btn-primary">立即购买</button>
-                        </li>
 
-                    </ul>
 
+
+                    <div class="loading"></div>
                 </div>
             </div>
         </div>
@@ -79,6 +70,7 @@
     {{/if}}
 </script>
 <script type="text/html" id="productTpl">
+    <ul class="productList">
     {{ each data v i}}
     <li>
         <img src="{{v.pic[0].picAddr}}">
@@ -91,6 +83,7 @@
     </li>
 
     {{/each}}
+    </ul>
 </script>
 <script src="./lib/mui/js/mui.js"></script>
 <script src="./lib/zepto/zepto.min.js"></script>

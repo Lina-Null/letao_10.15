@@ -77,7 +77,7 @@ $(function(){
     $('.btnSearch').click(function () {
         var key =$('.search_input').val().trim();
         if (key === ''){
-            alert("请输入搜索关键字");
+            mui.toast("请输入搜索关键字");
             return ;
         }
         //获取原数组
