@@ -127,7 +127,7 @@ $(function(){
 
 $('.productList').on("tap",'a',function(){
     var id = $(this).data("id");
-    location.href="product.html?id="+id;
+    location.href="product.html?productId="+id;
 
 });
 
