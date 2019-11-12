@@ -30,7 +30,6 @@ $(function () {
                 //2、如果是直接访问login.html,跳转到个人中心页
                 if(location.search.indexOf("retUrl") > -1 ){
                         var retUrl = location.search.replace("?retUrl=","");
-                        console.log(retUrl);
                         location.href = retUrl ;
                 }else{
                     location.href = "user.html";
