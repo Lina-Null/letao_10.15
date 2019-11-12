@@ -56,5 +56,43 @@ $(function(){
                }
            }
        });
-    })
+    });
+    $('.lt_main').on("tap",'.btn_edit',function () {
+
+         var obj = this.dataset;
+         var id = obj.id;
+            var htmlStr = template("editTpl",obj);
+            //mui将换行标记\n 解析成<br>标签
+            //需要将模板中所有的\n去掉
+        htmlStr = htmlStr.replace(/\n/g,"");
+            mui.confirm(htmlStr,"编辑商品",['确认','取消'],function(e){
+                if(e.index === 0 ){
+                    var size = $('.lt_size span.current').text();
+                    var num = $('.mui-numbox-input').val();
+                    $.ajax({
+                        type: "post",
+                        url: "/cart/updateCart",
+                        data: {
+                            id: id,
+                            size: size,
+                            num: num
+                        },
+                        dataType: "json",
+                        success: function( info ) {
+                            console.log( info );
+                            if ( info.success ) {
+                                // 编辑成功, 页面重新, 下拉刷新一次即可
+                                mui(".mui-scroll-wrapper").pullRefresh().pulldownLoading();
+                            }
+                        }
+                    })
+                }
+            });
+        // 手动初始化数字框
+        mui(".mui-numbox").numbox();
+    });
+    // 给编辑模态框的尺码添加选中功能
+    $('body').on("click", ".lt_size span", function() {
+        $(this).addClass("current").siblings().removeClass("current");
+    });
 })
